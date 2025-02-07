@@ -22,10 +22,10 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "PORT=10010 react-scripts start",
+    "build": "PORT=10010 react-scripts build",
+    "test": "PORT=10010 react-scripts test",
+    "eject": "PORT=10010 react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
