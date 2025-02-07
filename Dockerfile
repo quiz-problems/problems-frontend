@@ -36,7 +36,7 @@ RUN apk add --no-cache bash
 
 # Create a healthcheck
 HEALTHCHECK --interval=30s --timeout=3s \
-  CMD wget -q --spider http://localhost:80/ || exit 1
+  CMD wget -q --spider http://localhost:10010/ || exit 1
 
 # Expose the correct port
 EXPOSE 10010

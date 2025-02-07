@@ -31,42 +31,42 @@ api.interceptors.response.use(
 );
 
 const topicsApi = {
-  getAll: () => api.get('/api/v1/topics'),
-  create: (data) => api.post('/api/v1/topics', data),
-  update: (id, data) => api.put(`/api/v1/topics/${id}`, data),
-  delete: (id) => api.delete(`/api/v1/topics/${id}`),
+  getAll: () => api.get('/topics'),
+  create: (data) => api.post('/topics', data),
+  update: (id, data) => api.put(`/topics/${id}`, data),
+  delete: (id) => api.delete(`/topics/${id}`),
 };
 
 const quizzesApi = {
-  getAll: (params) => api.get('/api/v1/quizzes', { params }),
-  getById: (id) => api.get(`/api/v1/quizzes/${id}`),
-  submit: (id, answers) => api.post(`/api/v1/quizzes/${id}/submit`, answers),
-  export: (id) => api.post(`/api/v1/quizzes/${id}/export`, {}, { responseType: 'blob' }),
-  getCooldownStatus: (quizId) => api.get(`/api/v1/quizzes/${quizId}/cooldown`),
+  getAll: (params) => api.get('/quizzes', { params }),
+  getById: (id) => api.get(`/quizzes/${id}`),
+  submit: (id, answers) => api.post(`/quizzes/${id}/submit`, answers),
+  export: (id) => api.post(`/quizzes/${id}/export`, {}, { responseType: 'blob' }),
+  getCooldownStatus: (quizId) => api.get(`/quizzes/${quizId}/cooldown`),
 };
 
 const adminApi = {
   createQuiz: async (quizData) => {
-    return api.post('/api/v1/admin/quizzes', quizData);
+    return api.post('/admin/quizzes', quizData);
   },
   updateQuiz: async (id, quizData) => {
-    return api.put(`/api/v1/admin/quizzes/${id}`, quizData);
+    return api.put(`/admin/quizzes/${id}`, quizData);
   },
-  deleteQuiz: (id) => api.delete(`/api/v1/admin/quizzes/${id}`),
+  deleteQuiz: (id) => api.delete(`/admin/quizzes/${id}`),
 };
 
 const leaderboardApi = {
-  getGlobalLeaderboard: () => api.get('/api/v1/leaderboard/global'),
-  getQuizLeaderboard: (quizId) => api.get(`/api/v1/leaderboard/quiz/${quizId}`),
-  getTopicLeaderboard: (topicId) => api.get(`/api/v1/leaderboard/topic/${topicId}`),
-  getWeeklyLeaderboard: () => api.get('/api/v1/leaderboard/weekly')
+  getGlobalLeaderboard: () => api.get('/leaderboard/global'),
+  getQuizLeaderboard: (quizId) => api.get(`/leaderboard/quiz/${quizId}`),
+  getTopicLeaderboard: (topicId) => api.get(`/leaderboard/topic/${topicId}`),
+  getWeeklyLeaderboard: () => api.get('/leaderboard/weekly')
 };
 
 const userApi = {
-  getProfile: () => api.get('/api/v1/user/profile'),
-  getStats: () => api.get('/api/v1/user/profile/stats'),
-  getActivity: () => api.get('/api/v1/user/profile/activity'),
-  updateProfile: (data) => api.put('/api/v1/user/profile', data)
+  getProfile: () => api.get('/user/profile'),
+  getStats: () => api.get('/user/profile/stats'),
+  getActivity: () => api.get('/user/profile/activity'),
+  updateProfile: (data) => api.put('/user/profile', data)
 };
 
 export {

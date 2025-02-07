@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const response = await api.get('/api/v1/auth/me');
+        const response = await api.get('/auth/me');
         setUser(response.data);
       } catch (err) {
         console.error('Auth check failed:', err);
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.post('/api/v1/auth/register', userData);
+      const response = await api.post('/auth/register', userData);
       const { token, ...user } = response.data;
       localStorage.setItem('token', token);
       setUser(user);
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.post('/api/v1/auth/login', credentials);
+      const response = await api.post('/auth/login', credentials);
       const { token, user } = response.data;
       console.log('Login response:', { token, user });
       localStorage.setItem('token', token);
