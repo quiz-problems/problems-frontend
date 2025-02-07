@@ -12,6 +12,10 @@ RUN npm install
 # Copy source code
 COPY . .
 
+# Create env file at build time using ARG
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=${REACT_APP_API_URL}
+
 # Build the app
 RUN npm run build
 
@@ -23,6 +27,13 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Add bash for debugging
+RUN apk add --no-cache bash
+
+# Create a healthcheck
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD wget -q --spider http://localhost:80/ || exit 1
 
 # Expose port 80
 EXPOSE 80
