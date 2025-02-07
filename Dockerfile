@@ -38,8 +38,8 @@ RUN apk add --no-cache bash
 HEALTHCHECK --interval=30s --timeout=3s \
   CMD wget -q --spider http://localhost:80/ || exit 1
 
-# Expose port 80
-EXPOSE 80
+# Expose the correct port
+EXPOSE 10010
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"] 
